@@ -20,24 +20,75 @@ class HomeController: UICollectionViewController {
     
     static let sectionHeaderElementKindString = "categoryHeaderId"
     
-    var popular = [PopularShow]()
+    var popular = [TVShow]()
+    var topRated = [TVShow]()
+    var onTheAir = [TVShow]()
+    
+    var categories = ["", "Popular", "Top Rated", "On the Air"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
         configureCollectionView()
         
-        fetchTVShows()
+        fetchHomeSections()
     }
     
-    fileprivate func fetchTVShows() {
-        Service.shared.fetchPopularShows { (result) in
+    fileprivate func fetchHomeSections() {
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        fetchPopular {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        fetchTopRated {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        fetchOnTheAir {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    fileprivate func fetchPopular(completion: @escaping () -> () ) {
+        Service.shared.fetchPopularShows { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print("Error fetching popular shows", error)
             case .success(let response):
-                self.popular = response.results
-                self.collectionView.reloadData()
+                self?.popular = response.results
+                completion()
+            }
+        }
+    }
+    
+    fileprivate func fetchTopRated(completion: @escaping () -> () ) {
+        Service.shared.fetchTopRatedShows { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("Error fetching popular shows", error)
+            case .success(let response):
+                self?.topRated = response.results
+                completion()
+            }
+        }
+    }
+    
+    fileprivate func fetchOnTheAir(completion: @escaping () -> () ) {
+        Service.shared.fetchOnTheAirShows { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print("Error fetching popular shows", error)
+            case .success(let response):
+                self?.onTheAir = response.results
+                completion()
             }
         }
     }
@@ -66,16 +117,27 @@ class HomeController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeCategoryHeader.id, for: indexPath) as! HomeCategoryHeader
-        header.text = "Popular Shows"
+        header.text = categories[indexPath.section]
         return header
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return categories.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        section == 0 ? 2 : popular.count
+        switch section {
+        case 0:
+            return 2
+        case 1:
+            return popular.count
+        case 2:
+            return topRated.count
+        case 3:
+            return onTheAir.count
+        default:
+            return 0
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,7 +149,16 @@ class HomeController: UICollectionViewController {
         }
         
         let posterCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePosterCell.id, for: indexPath) as! HomePosterCell
-        posterCell.tvShow = popular[indexPath.item]
+        
+        if indexPath.section == 1 {
+            posterCell.tvShow = popular[indexPath.item]
+        }
+        
+        if indexPath.section == 2 {
+            posterCell.tvShow = topRated[indexPath.item]
+        }
+        
+        posterCell.tvShow = onTheAir[indexPath.item]
         return posterCell
     }
     

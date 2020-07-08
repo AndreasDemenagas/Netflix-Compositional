@@ -15,8 +15,20 @@ class Service {
     fileprivate let base_url = "https://api.themoviedb.org/3/"
     fileprivate let api_key = "?api_key=8708e6e442f4c7d558ae6aa51d79152b"
     
-    func fetchPopularShows(completion: @escaping (Result<PopularShowsResponse, Error>) -> ()) {
+    func fetchPopularShows(completion: @escaping (Result<APIResponse, Error>) -> ()) {
         let urlString = "https://api.themoviedb.org/3/tv/popular?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        
+        fetchData(urlString: urlString, completion: completion)
+    }
+    
+    func fetchTopRatedShows(completion: @escaping (Result<APIResponse, Error>) -> ()) {
+        let urlString = "https://api.themoviedb.org/3/tv/top_rated?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        
+        fetchData(urlString: urlString, completion: completion)
+    }
+    
+    func fetchOnTheAirShows(completion: @escaping (Result<APIResponse, Error>) -> ()) {
+        let urlString = "https://api.themoviedb.org/3/tv/on_the_air?api_key=8708e6e442f4c7d558ae6aa51d79152b"
         
         fetchData(urlString: urlString, completion: completion)
     }

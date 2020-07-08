@@ -14,7 +14,7 @@ class HomeBannerCell: UICollectionViewCell {
     
     let imageView = UIImageView()
     
-    var tvShow: PopularShow? {
+    var tvShow: TVShow? {
         didSet {
             imageView.backgroundColor = .systemRed
         }

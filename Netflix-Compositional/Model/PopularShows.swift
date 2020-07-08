@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct PopularShowsResponse: Codable {
+struct APIResponse: Codable {
     let page: Int
     let total_results: Int
     let total_pages: Int
-    let results: [PopularShow]
+    let results: [TVShow]
 }
 
-struct PopularShow: Codable {
+struct TVShow: Codable {
     let poster_path: String?
     let name: String?
     let backdrop_path: String?
