@@ -69,7 +69,10 @@ class HomeController: UICollectionViewController {
             case .failure(let error):
                 print("Error fetching popular", error)
             case .success(let response):
-                self.bannerShows = response.results
+                let filteredShows = response.results.filter { (show) -> Bool in
+                    return show.backdrop_path != nil
+                }
+                self.bannerShows = filteredShows
                 completion()
             }
         }
