@@ -16,6 +16,7 @@ struct APIResponse: Codable {
 }
 
 struct TVShow: Codable {
+    let id: Int
     let poster_path: String?
     let name: String?
     let backdrop_path: String?

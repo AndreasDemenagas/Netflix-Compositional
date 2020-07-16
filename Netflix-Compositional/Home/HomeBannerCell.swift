@@ -16,7 +16,9 @@ class HomeBannerCell: UICollectionViewCell {
     
     var tvShow: TVShow? {
         didSet {
-            imageView.backgroundColor = .systemRed
+            if let urlString = tvShow?.backdrop_path {
+                imageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
+            }
         }
     }
     

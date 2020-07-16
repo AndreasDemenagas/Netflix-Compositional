@@ -17,7 +17,7 @@
 		F5FD2A3D24B326BC0013ACB8 /* HomeCategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A3C24B326BC0013ACB8 /* HomeCategoryHeader.swift */; };
 		F5FD2A3F24B340750013ACB8 /* HomeBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A3E24B340750013ACB8 /* HomeBannerCell.swift */; };
 		F5FD2A4124B3540C0013ACB8 /* UICollectionView+CompLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A4024B3540C0013ACB8 /* UICollectionView+CompLayout.swift */; };
-		F5FD2A4424B35F030013ACB8 /* PopularShows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A4324B35F030013ACB8 /* PopularShows.swift */; };
+		F5FD2A4424B35F030013ACB8 /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A4324B35F030013ACB8 /* TVShow.swift */; };
 		F5FD2A4624B3605F0013ACB8 /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A4524B3605F0013ACB8 /* UIImage+Cache.swift */; };
 		F5FD2A4824B3757E0013ACB8 /* HomePosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A4724B3757E0013ACB8 /* HomePosterCell.swift */; };
 /* End PBXBuildFile section */
@@ -35,7 +35,7 @@
 		F5FD2A3C24B326BC0013ACB8 /* HomeCategoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryHeader.swift; sourceTree = "<group>"; };
 		F5FD2A3E24B340750013ACB8 /* HomeBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerCell.swift; sourceTree = "<group>"; };
 		F5FD2A4024B3540C0013ACB8 /* UICollectionView+CompLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+CompLayout.swift"; sourceTree = "<group>"; };
-		F5FD2A4324B35F030013ACB8 /* PopularShows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularShows.swift; sourceTree = "<group>"; };
+		F5FD2A4324B35F030013ACB8 /* TVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
 		F5FD2A4524B3605F0013ACB8 /* UIImage+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Cache.swift"; sourceTree = "<group>"; };
 		F5FD2A4724B3757E0013ACB8 /* HomePosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePosterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,7 +107,7 @@
 		F5FD2A4224B35EEE0013ACB8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F5FD2A4324B35F030013ACB8 /* PopularShows.swift */,
+				F5FD2A4324B35F030013ACB8 /* TVShow.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 				F5FD2A4124B3540C0013ACB8 /* UICollectionView+CompLayout.swift in Sources */,
 				F5FD2A4624B3605F0013ACB8 /* UIImage+Cache.swift in Sources */,
 				F5FD2A4824B3757E0013ACB8 /* HomePosterCell.swift in Sources */,
-				F5FD2A4424B35F030013ACB8 /* PopularShows.swift in Sources */,
+				F5FD2A4424B35F030013ACB8 /* TVShow.swift in Sources */,
 				F5FD2A2124B31BD20013ACB8 /* AppDelegate.swift in Sources */,
 				F5FD2A3B24B31CC20013ACB8 /* Service.swift in Sources */,
 				F5FD2A2324B31BD20013ACB8 /* SceneDelegate.swift in Sources */,

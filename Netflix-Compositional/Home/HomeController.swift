@@ -20,6 +20,7 @@ class HomeController: UICollectionViewController {
     
     static let sectionHeaderElementKindString = "categoryHeaderId"
     
+    var bannerShows = [TVShow]()
     var popular = [TVShow]()
     var topRated = [TVShow]()
     var onTheAir = [TVShow]()
@@ -38,6 +39,11 @@ class HomeController: UICollectionViewController {
         let group = DispatchGroup()
         
         group.enter()
+        getBannerShows {
+            group.leave()
+        }
+        
+        group.enter()
         getPopular {
             group.leave()
         }
@@ -54,6 +60,18 @@ class HomeController: UICollectionViewController {
         
         group.notify(queue: .main) {
             self.collectionView.reloadData()
+        }
+    }
+    
+    fileprivate func getBannerShows(completion: @escaping () -> () ) {
+        Service.shared.fetchStarWarsShows { (result) in
+            switch result {
+            case .failure(let error):
+                print("Error fetching popular", error)
+            case .success(let response):
+                self.bannerShows = response.results
+                completion()
+            }
         }
     }
     
@@ -128,7 +146,7 @@ class HomeController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 2
+            return bannerShows.count
         case 1:
             return popular.count
         case 2:
@@ -144,7 +162,7 @@ class HomeController: UICollectionViewController {
         
         if indexPath.section == 0 {
             let bannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeBannerCell.id, for: indexPath) as! HomeBannerCell
-            bannerCell.imageView.backgroundColor = .systemRed
+            bannerCell.tvShow = bannerShows[indexPath.item]
             return bannerCell
         }
         
