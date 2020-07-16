@@ -21,11 +21,12 @@ class HomeController: UICollectionViewController {
     static let sectionHeaderElementKindString = "categoryHeaderId"
     
     var bannerShows = [TVShow]()
+    var continueWatching = [TVShow]()
     var popular = [TVShow]()
     var topRated = [TVShow]()
     var onTheAir = [TVShow]()
     
-    var categories = ["", "Popular", "Top Rated", "On the Air"]
+    var categories = ["", "Continue Watching", "Popular", "Top Rated", "On the Air"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,11 @@ class HomeController: UICollectionViewController {
         
         group.enter()
         getBannerShows {
+            group.leave()
+        }
+        
+        group.enter()
+        getContinueWatching {
             group.leave()
         }
         
@@ -73,6 +79,18 @@ class HomeController: UICollectionViewController {
                     return show.backdrop_path != nil
                 }
                 self.bannerShows = filteredShows
+                completion()
+            }
+        }
+    }
+    
+    fileprivate func getContinueWatching(completion: @escaping () -> () ) {
+        Service.shared.fetchContinueWatching { (result) in
+            switch result {
+            case .failure(let error):
+                print("Error fetching popular", error)
+            case .success(let response):
+                self.continueWatching = response.results
                 completion()
             }
         }
@@ -133,7 +151,6 @@ class HomeController: UICollectionViewController {
     }
     
     @objc fileprivate func handleSearch() {
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -151,10 +168,12 @@ class HomeController: UICollectionViewController {
         case 0:
             return bannerShows.count
         case 1:
-            return popular.count
+            return continueWatching.count
         case 2:
-            return topRated.count
+            return popular.count
         case 3:
+            return topRated.count
+        case 4:
             return onTheAir.count
         default:
             return 20
@@ -166,24 +185,33 @@ class HomeController: UICollectionViewController {
         if indexPath.section == 0 {
             let bannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeBannerCell.id, for: indexPath) as! HomeBannerCell
             bannerCell.tvShow = bannerShows[indexPath.item]
+            bannerCell.playButton.isHidden = true 
+            return bannerCell
+        }
+        
+        if indexPath.section == 1 {
+            let bannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeBannerCell.id, for: indexPath) as! HomeBannerCell
+            bannerCell.tvShow = continueWatching[indexPath.item]
+            bannerCell.needsHiddenUI = true
             return bannerCell
         }
         
         let posterCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePosterCell.id, for: indexPath) as! HomePosterCell
         
-        if indexPath.section == 1 {
+        if indexPath.section == 2 {
             posterCell.tvShow = popular[indexPath.item]
         }
 
-        else if indexPath.section == 2 {
+        else if indexPath.section == 3 {
             posterCell.tvShow = topRated[indexPath.item]
         }
         
-        else if indexPath.section == 3 {
+        else if indexPath.section == 4 {
             posterCell.tvShow = onTheAir[indexPath.item]
         }
-
+        
+        posterCell.imageView.backgroundColor = .systemBlue
         return posterCell
     }
-    
+
 }

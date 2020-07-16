@@ -23,6 +23,17 @@ extension UICollectionViewCompositionalLayout {
                 return section
             }
             
+            else if sectionNumber == 1 {
+                let item = NSCollectionLayoutItem.init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+                item.contentInsets.trailing = 32
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.75), heightDimension: .absolute(150)), subitems: [item])
+                let section = NSCollectionLayoutSection(group: group)
+                section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), elementKind: HomeController.sectionHeaderElementKindString, alignment: .topLeading)]
+                section.orthogonalScrollingBehavior = .groupPaging
+                section.contentInsets = .init(top: 12, leading: 16, bottom: 12, trailing: 0)
+                return section
+            }
+            
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1.5)))
             item.contentInsets.trailing = 16
             item.contentInsets.bottom = 16
@@ -32,7 +43,6 @@ extension UICollectionViewCompositionalLayout {
             section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), elementKind: HomeController.sectionHeaderElementKindString, alignment: .topLeading)]
             section.orthogonalScrollingBehavior = .continuous
             section.contentInsets = .init(top: 12, leading: 16, bottom: 0, trailing: 0)
-            
             return section
         }
         

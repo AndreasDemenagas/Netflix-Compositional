@@ -22,6 +22,8 @@ class HomeBannerCell: UICollectionViewCell {
         return lbl
     }()
     
+    let playButton = UIImageView()
+    
     let blackView = UIView()
     
     var tvShow: TVShow? {
@@ -29,7 +31,18 @@ class HomeBannerCell: UICollectionViewCell {
             if let urlString = tvShow?.backdrop_path {
                 imageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
             }
+            titleLabel.isHidden = false
+            blackView.isHidden = false
+            playButton.isHidden = true
             titleLabel.text = tvShow?.name
+        }
+    }
+    
+    var needsHiddenUI: Bool? {
+        didSet {
+            titleLabel.isHidden = true
+            blackView.isHidden = true
+            playButton.isHidden = false
         }
     }
     
@@ -45,6 +58,14 @@ class HomeBannerCell: UICollectionViewCell {
         
         addSubview(titleLabel)
         titleLabel.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16), size: .init(width: .zero, height: 40))
+        
+        playButton.image = #imageLiteral(resourceName: "icons8-play-64")
+        addSubview(playButton)
+        playButton.translatesAutoresizingMaskIntoConstraints = false
+        playButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        playButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        playButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        playButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
     }
     
     required init?(coder: NSCoder) {

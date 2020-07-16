@@ -20,6 +20,11 @@ class Service {
         fetchData(urlString: urlString, completion: completion)
     }
     
+    func fetchContinueWatching(completion: @escaping (Result<APIResponse, Error>) -> ()) {
+        let urlString = "https://api.themoviedb.org/3/search/tv?api_key=8708e6e442f4c7d558ae6aa51d79152b&page=1&query=the"
+        fetchData(urlString: urlString, completion: completion)
+    }
+    
     func fetchPopularShows(completion: @escaping (Result<APIResponse, Error>) -> ()) {
         let urlString = "https://api.themoviedb.org/3/tv/popular?api_key=8708e6e442f4c7d558ae6aa51d79152b"
         
