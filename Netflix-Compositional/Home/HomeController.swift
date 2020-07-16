@@ -35,59 +35,59 @@ class HomeController: UICollectionViewController {
     }
     
     fileprivate func fetchHomeSections() {
-        let dispatchGroup = DispatchGroup()
+        let group = DispatchGroup()
         
-        dispatchGroup.enter()
-        fetchPopular {
-            dispatchGroup.leave()
+        group.enter()
+        getPopular {
+            group.leave()
         }
         
-        dispatchGroup.enter()
-        fetchTopRated {
-            dispatchGroup.leave()
+        group.enter()
+        getTopRated {
+            group.leave()
         }
         
-        dispatchGroup.enter()
-        fetchOnTheAir {
-            dispatchGroup.leave()
+        group.enter()
+        getOnTheAir {
+            group.leave()
         }
         
-        dispatchGroup.notify(queue: .main) {
+        group.notify(queue: .main) {
             self.collectionView.reloadData()
         }
     }
     
-    fileprivate func fetchPopular(completion: @escaping () -> () ) {
-        Service.shared.fetchPopularShows { [weak self] (result) in
+    fileprivate func getPopular(completion: @escaping () -> () ) {
+        Service.shared.fetchPopularShows { (result) in
             switch result {
             case .failure(let error):
-                print("Error fetching popular shows", error)
+                print("Error fetching popular", error)
             case .success(let response):
-                self?.popular = response.results
+                self.popular = response.results
                 completion()
             }
         }
     }
     
-    fileprivate func fetchTopRated(completion: @escaping () -> () ) {
-        Service.shared.fetchTopRatedShows { [weak self] (result) in
+    fileprivate func getTopRated(completion: @escaping () -> () ) {
+        Service.shared.fetchTopRatedShows { (result) in
             switch result {
             case .failure(let error):
-                print("Error fetching popular shows", error)
+                print("Error fetching popular", error)
             case .success(let response):
-                self?.topRated = response.results
+                self.topRated = response.results
                 completion()
             }
         }
     }
     
-    fileprivate func fetchOnTheAir(completion: @escaping () -> () ) {
-        Service.shared.fetchOnTheAirShows { [weak self] (result) in
+    fileprivate func getOnTheAir(completion: @escaping () -> () ) {
+        Service.shared.fetchOnTheAirShows { (result) in
             switch result {
             case .failure(let error):
-                print("Error fetching popular shows", error)
+                print("Error fetching popular", error)
             case .success(let response):
-                self?.onTheAir = response.results
+                self.onTheAir = response.results
                 completion()
             }
         }
@@ -136,7 +136,7 @@ class HomeController: UICollectionViewController {
         case 3:
             return onTheAir.count
         default:
-            return 0
+            return 20
         }
     }
     
@@ -153,12 +153,15 @@ class HomeController: UICollectionViewController {
         if indexPath.section == 1 {
             posterCell.tvShow = popular[indexPath.item]
         }
-        
-        if indexPath.section == 2 {
+
+        else if indexPath.section == 2 {
             posterCell.tvShow = topRated[indexPath.item]
         }
         
-        posterCell.tvShow = onTheAir[indexPath.item]
+        else if indexPath.section == 3 {
+            posterCell.tvShow = onTheAir[indexPath.item]
+        }
+
         return posterCell
     }
     
