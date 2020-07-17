@@ -14,11 +14,25 @@ class ComingSoonCell: UICollectionViewCell {
     
     let backdropImageView = UIImageView()
     
+    var show: TVShow? {
+        didSet {
+            if let urlString = show?.backdrop_path {
+                backdropImageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
+            }
+            titleLabel.text = show?.name
+        }
+    }
+    
+    let titleLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(backdropImageView)
         backdropImageView.fillSuperView()
+        
+        addSubview(titleLabel)
+        titleLabel.fillSuperView()
         
         backdropImageView.backgroundColor = .systemIndigo
     }

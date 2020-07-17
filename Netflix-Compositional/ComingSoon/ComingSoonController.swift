@@ -18,6 +18,12 @@ class ComingSoonController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private enum Section {
+        case main
+    }
+    
+    private var dataSource: UICollectionViewDiffableDataSource<Section, TVShow>?
+    
     var comingSoon = [TVShow]()
     
     override func viewDidLoad() {
@@ -27,15 +33,37 @@ class ComingSoonController: UICollectionViewController {
         navigationItem.titleView = imageView
         
         collectionView.register(ComingSoonCell.self, forCellWithReuseIdentifier: ComingSoonCell.id)
+        
+        setupDataSource()
+        fetchComingSoon()
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+    fileprivate func setupDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, TVShow>(collectionView: collectionView, cellProvider: { (cv, indexPath, tvShow) -> UICollectionViewCell? in
+            let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: ComingSoonCell.id, for: indexPath) as! ComingSoonCell
+            cell.show = tvShow
+            return cell
+        })
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComingSoonCell.id, for: indexPath) as! ComingSoonCell
-        return cell 
+    fileprivate func fetchComingSoon() {
+        Service.shared.fetchComingSoon { (result) in
+            switch result {
+            case .failure(let error):
+                print("Error fetching upcoming", error)
+            case .success(let response):
+                self.comingSoon = response.results.filter({ (show) -> Bool in
+                    show.backdrop_path != nil
+                })
+                self.createSnapshot(with: self.comingSoon)
+            }
+        }
     }
     
+    fileprivate func createSnapshot(with shows: [TVShow]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, TVShow>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(shows)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
 }

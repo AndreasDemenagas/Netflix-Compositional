@@ -12,9 +12,6 @@ class Service {
     
     static let shared = Service()
     
-    fileprivate let base_url = "https://api.themoviedb.org/3/"
-    fileprivate let api_key = "?api_key=8708e6e442f4c7d558ae6aa51d79152b"
-    
     func fetchComingSoon(completion: @escaping (Result<APIResponse, Error>) -> () ) {
         let urlString = "https://api.themoviedb.org/3/tv/airing_today?api_key=8708e6e442f4c7d558ae6aa51d79152b"
         fetchData(urlString: urlString, completion: completion)
