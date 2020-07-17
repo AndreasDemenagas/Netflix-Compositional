@@ -19,5 +19,6 @@ struct TVShow: Codable, Hashable {
     let id: Int
     let poster_path: String?
     let name: String?
+    let overview: String?
     let backdrop_path: String?
 }
