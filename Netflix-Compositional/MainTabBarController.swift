@@ -17,9 +17,12 @@ class MainTabBarController: UITabBarController {
         tabBar.tintColor = .white
         
         let homeController = navigationController(viewController: HomeController(), imageName: "house", title: "Home")
-        let comingSoonController = navigationController(viewController: UIViewController(), imageName: "calendar", title: "Coming Soon")
+        let comingSoonController = navigationController(viewController: ComingSoonController(), imageName: "calendar", title: "Coming Soon")
+        let downloadsController = navigationController(viewController: UIViewController(), imageName: "square.and.arrow.down", title: "Downloads")
+        let listController = navigationController(viewController: UIViewController(), imageName: "tv", title: "My List")
+        let moreController = navigationController(viewController: UIViewController(), imageName: "ellipsis.circle", title: "More")
         
-        viewControllers = [homeController, comingSoonController]
+        viewControllers = [homeController, listController, comingSoonController, downloadsController, moreController]
     }
     
     

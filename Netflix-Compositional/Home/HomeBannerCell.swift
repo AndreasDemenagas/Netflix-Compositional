@@ -18,7 +18,8 @@ class HomeBannerCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.textColor = .white
         lbl.text = "Star Wars: The Clone Wars"
-        lbl.font = UIFont.boldSystemFont(ofSize: 18)
+        lbl.font = UIFontMetrics.default.scaledFont(for: UIFont.boldSystemFont(ofSize: 18))
+        lbl.adjustsFontForContentSizeCategory = true
         return lbl
     }()
     

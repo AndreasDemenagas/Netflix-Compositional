@@ -22,8 +22,9 @@ class HomeCategoryHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+    
+        label.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 18, weight: .bold))
+        label.adjustsFontForContentSizeCategory = true 
         label.textColor = .white
         
         addSubview(label)

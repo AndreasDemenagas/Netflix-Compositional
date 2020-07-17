@@ -70,7 +70,7 @@ class HomeController: UICollectionViewController {
     }
     
     fileprivate func getBannerShows(completion: @escaping () -> () ) {
-        Service.shared.fetchStarWarsShows { (result) in
+        Service.shared.fetchBannerShows { (result) in
             switch result {
             case .failure(let error):
                 print("Error fetching popular", error)
