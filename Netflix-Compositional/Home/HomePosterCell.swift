@@ -26,6 +26,8 @@ class HomePosterCell: UICollectionViewCell {
         super.init(frame: frame)
         
         addSubview(imageView)
+        imageView.layer.cornerRadius = 5
+        imageView.layer.masksToBounds = true
         imageView.fillSuperView()
     }
     

@@ -36,11 +36,13 @@ class HomeBannerCell: UICollectionViewCell {
             blackView.isHidden = false
             playButton.isHidden = true
             titleLabel.text = tvShow?.name
+            imageView.layer.cornerRadius = 0
         }
     }
     
     var needsHiddenUI: Bool? {
         didSet {
+            imageView.layer.cornerRadius = 5
             titleLabel.isHidden = true
             blackView.isHidden = true
             playButton.isHidden = false
@@ -51,6 +53,7 @@ class HomeBannerCell: UICollectionViewCell {
         super.init(frame: frame)
         
         addSubview(imageView)
+        imageView.layer.masksToBounds = true 
         imageView.fillSuperView()
         
         blackView.backgroundColor = UIColor.init(white: 0, alpha: 0.7)
