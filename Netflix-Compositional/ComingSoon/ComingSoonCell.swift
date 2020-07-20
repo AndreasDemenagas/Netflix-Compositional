@@ -23,6 +23,7 @@ class ComingSoonCell: UICollectionViewCell {
             }
             titleLabel.text = show?.name
             plotLabel.text = show?.overview
+            releasedLabel.text = "First aired: \(show?.getFirstAirDate() ?? "")"
             
             if let genres = show?.genre_ids {
                 var genreText = ""

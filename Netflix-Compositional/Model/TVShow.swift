@@ -22,4 +22,21 @@ struct TVShow: Codable, Hashable {
     let overview: String?
     let backdrop_path: String?
     let genre_ids: [Int]?
+    let first_air_date: String?
+    
+    func getFirstAirDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        guard let dateString = self.first_air_date else {
+            return ""
+        }
+        
+        if let date = formatter.date(from: dateString) {
+            let stringFormatter = DateFormatter()
+            stringFormatter.dateFormat = "MMMM dd, yyyy"
+            return "\(stringFormatter.string(from: date))"
+        }
+        
+        return ""
+    }
 }

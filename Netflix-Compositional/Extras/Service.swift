@@ -65,8 +65,13 @@ class Service {
             
             guard let data = data else { return }
             
+            let decoder = JSONDecoder()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-mm-dd"
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            
             do {
-                let results = try JSONDecoder().decode(T.self, from: data)
+                let results = try decoder.decode(T.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(results))
                 }
