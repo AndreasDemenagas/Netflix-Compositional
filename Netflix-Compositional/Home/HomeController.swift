@@ -26,7 +26,13 @@ class HomeController: UICollectionViewController {
     var topRated = [TVShow]()
     var onTheAir = [TVShow]()
     
-    var categories = ["", "Continue Watching", "Popular", "Top Rated", "On the Air"]
+    var categories = [
+        HomeCategories.topBanner.rawValue,
+        HomeCategories.continueWatching.rawValue,
+        HomeCategories.popular.rawValue,
+        HomeCategories.topRated.rawValue,
+        HomeCategories.onTheAir.rawValue
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
