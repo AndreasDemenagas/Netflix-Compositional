@@ -10,6 +10,7 @@ import Foundation
 
 enum HomeCategories: String {
     case topBanner = ""
+    case clips = "Clips"
     case continueWatching = "Continue Watching"
     case popular = "Popular"
     case topRated = "Top Rated"

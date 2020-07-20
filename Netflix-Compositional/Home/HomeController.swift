@@ -28,6 +28,7 @@ class HomeController: UICollectionViewController {
     
     var categories = [
         HomeCategories.topBanner.rawValue,
+        HomeCategories.clips.rawValue,
         HomeCategories.continueWatching.rawValue,
         HomeCategories.popular.rawValue,
         HomeCategories.topRated.rawValue,
@@ -153,6 +154,7 @@ class HomeController: UICollectionViewController {
         collectionView.horizontalScrollIndicatorInsets.top = 16
         collectionView.register(HomeCategoryHeader.self, forSupplementaryViewOfKind: HomeController.sectionHeaderElementKindString, withReuseIdentifier: HomeCategoryHeader.id)
         collectionView.register(HomeBannerCell.self, forCellWithReuseIdentifier: HomeBannerCell.id)
+        collectionView.register(HomeClipsCell.self, forCellWithReuseIdentifier: HomeClipsCell.id)
         collectionView.register(HomePosterCell.self, forCellWithReuseIdentifier: HomePosterCell.id)
     }
     
@@ -202,6 +204,12 @@ class HomeController: UICollectionViewController {
         }
         
         if indexPath.section == 1 {
+            let clipsCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeClipsCell.id, for: indexPath) as! HomeClipsCell
+            clipsCell.imageView.backgroundColor = .red
+            return clipsCell
+        }
+        
+        if indexPath.section == 2 {
             let bannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeBannerCell.id, for: indexPath) as! HomeBannerCell
             bannerCell.tvShow = continueWatching[indexPath.item]
             bannerCell.needsHiddenUI = true
@@ -210,15 +218,15 @@ class HomeController: UICollectionViewController {
         
         let posterCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePosterCell.id, for: indexPath) as! HomePosterCell
         
-        if indexPath.section == 2 {
+        if indexPath.section == 3 {
             posterCell.tvShow = popular[indexPath.item]
         }
 
-        else if indexPath.section == 3 {
+        else if indexPath.section == 4 {
             posterCell.tvShow = topRated[indexPath.item]
         }
         
-        else if indexPath.section == 4 {
+        else if indexPath.section == 5 {
             posterCell.tvShow = onTheAir[indexPath.item]
         }
         
