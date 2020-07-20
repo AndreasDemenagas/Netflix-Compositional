@@ -14,6 +14,8 @@ class ComingSoonCell: UICollectionViewCell {
     
     let backdropImageView = UIImageView()
     
+    var allGenres: GenreBank?
+    
     var show: TVShow? {
         didSet {
             if let urlString = show?.backdrop_path {
@@ -21,13 +23,21 @@ class ComingSoonCell: UICollectionViewCell {
             }
             titleLabel.text = show?.name
             plotLabel.text = show?.overview
+            
+            if let genres = show?.genre_ids {
+                var genreText = ""
+                for id in genres {
+                    let genre = allGenres?.dictionary[id] ?? ""
+                    genreText.append("\(genre) • ")
+                }
+                genresLabel.text = String(genreText.dropLast(2))
+            }
         }
     }
     
     let titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.text = "Released Feb 2nd 2020"
         lbl.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 19, weight: .heavy))
         lbl.adjustsFontForContentSizeCategory = true
         return lbl
@@ -52,6 +62,15 @@ class ComingSoonCell: UICollectionViewCell {
         return lbl
     }()
     
+    let genresLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .white
+        lbl.text = "Comedy • Adventure • Sci-Fi • Drama"
+        lbl.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 13, weight: .regular))
+        lbl.adjustsFontForContentSizeCategory = true
+        return lbl
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -73,7 +92,8 @@ class ComingSoonCell: UICollectionViewCell {
         addSubview(plotLabel)
         plotLabel.anchor(top: titleLabel.bottomAnchor, leading: releasedLabel.leadingAnchor, bottom: nil, trailing: releasedLabel.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0))
         
-        backgroundColor = .brown
+        addSubview(genresLabel)
+        genresLabel.anchor(top: plotLabel.bottomAnchor, leading: releasedLabel.leadingAnchor, bottom: nil, trailing: releasedLabel.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0))
     }
     
     required init?(coder: NSCoder) {

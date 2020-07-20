@@ -24,6 +24,8 @@ class ComingSoonController: UICollectionViewController {
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, TVShow>?
     
+    var allGenres = GenreBank()
+    
     var comingSoon = [TVShow]()
     
     override func viewDidLoad() {
@@ -41,6 +43,7 @@ class ComingSoonController: UICollectionViewController {
     fileprivate func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, TVShow>(collectionView: collectionView, cellProvider: { (cv, indexPath, tvShow) -> UICollectionViewCell? in
             let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: ComingSoonCell.id, for: indexPath) as! ComingSoonCell
+            cell.allGenres = self.allGenres
             cell.show = tvShow
             return cell
         })

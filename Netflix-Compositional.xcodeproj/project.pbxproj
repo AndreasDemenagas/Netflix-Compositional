@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F52B88C624C065EE00F4DB63 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B88C524C065EE00F4DB63 /* MainTabBarController.swift */; };
+		F5665B9F24C4A6F40066D560 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5665B9E24C4A6F40066D560 /* Genre.swift */; };
 		F5CB08DC24C1D36500912F3D /* ComingSoonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DB24C1D36500912F3D /* ComingSoonController.swift */; };
 		F5CB08DE24C1D40B00912F3D /* ComingSoonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DD24C1D40B00912F3D /* ComingSoonLayout.swift */; };
 		F5CB08E024C1DA3E00912F3D /* ComingSoonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DF24C1DA3E00912F3D /* ComingSoonCell.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		F52B88C524C065EE00F4DB63 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		F5665B9E24C4A6F40066D560 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		F5CB08DB24C1D36500912F3D /* ComingSoonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonController.swift; sourceTree = "<group>"; };
 		F5CB08DD24C1D40B00912F3D /* ComingSoonLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonLayout.swift; sourceTree = "<group>"; };
 		F5CB08DF24C1DA3E00912F3D /* ComingSoonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonCell.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				F5FD2A4324B35F030013ACB8 /* TVShow.swift */,
+				F5665B9E24C4A6F40066D560 /* Genre.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				F5FD2A4124B3540C0013ACB8 /* HomeLayout.swift in Sources */,
 				F5FD2A4624B3605F0013ACB8 /* UIImage+Cache.swift in Sources */,
 				F5FD2A4824B3757E0013ACB8 /* HomePosterCell.swift in Sources */,
+				F5665B9F24C4A6F40066D560 /* Genre.swift in Sources */,
 				F5CB08DE24C1D40B00912F3D /* ComingSoonLayout.swift in Sources */,
 				F5FD2A4424B35F030013ACB8 /* TVShow.swift in Sources */,
 				F5CB08E024C1DA3E00912F3D /* ComingSoonCell.swift in Sources */,

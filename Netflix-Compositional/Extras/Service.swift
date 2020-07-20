@@ -12,6 +12,13 @@ class Service {
     
     static let shared = Service()
     
+    private init() {}
+    
+    func fetchGenreList(completion: @escaping (Result<GenreResponse, Error>) -> () ) {
+        let urlString = "https://api.themoviedb.org/3/genre/tv/list?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        fetchData(urlString: urlString, completion: completion)
+    }
+    
     func fetchComingSoon(completion: @escaping (Result<APIResponse, Error>) -> () ) {
         let urlString = "https://api.themoviedb.org/3/tv/airing_today?api_key=8708e6e442f4c7d558ae6aa51d79152b"
         fetchData(urlString: urlString, completion: completion)
