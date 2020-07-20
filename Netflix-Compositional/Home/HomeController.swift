@@ -153,6 +153,12 @@ class HomeController: UICollectionViewController {
     @objc fileprivate func handleSearch() {
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let seasonListController = SeasonListController(collectionViewLayout: UICollectionViewFlowLayout())
+        seasonListController.modalPresentationStyle = .fullScreen
+        present(seasonListController, animated: true, completion: nil)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeCategoryHeader.id, for: indexPath) as! HomeCategoryHeader
         header.text = categories[indexPath.section]

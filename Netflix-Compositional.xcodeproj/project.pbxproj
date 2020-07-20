@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F52B88C624C065EE00F4DB63 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B88C524C065EE00F4DB63 /* MainTabBarController.swift */; };
 		F5665B9F24C4A6F40066D560 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5665B9E24C4A6F40066D560 /* Genre.swift */; };
+		F5665BA224C5A9F40066D560 /* SeasonListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5665BA124C5A9F40066D560 /* SeasonListController.swift */; };
 		F5CB08DC24C1D36500912F3D /* ComingSoonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DB24C1D36500912F3D /* ComingSoonController.swift */; };
 		F5CB08DE24C1D40B00912F3D /* ComingSoonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DD24C1D40B00912F3D /* ComingSoonLayout.swift */; };
 		F5CB08E024C1DA3E00912F3D /* ComingSoonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DF24C1DA3E00912F3D /* ComingSoonCell.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		F52B88C524C065EE00F4DB63 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F5665B9E24C4A6F40066D560 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		F5665BA124C5A9F40066D560 /* SeasonListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListController.swift; sourceTree = "<group>"; };
 		F5CB08DB24C1D36500912F3D /* ComingSoonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonController.swift; sourceTree = "<group>"; };
 		F5CB08DD24C1D40B00912F3D /* ComingSoonLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonLayout.swift; sourceTree = "<group>"; };
 		F5CB08DF24C1DA3E00912F3D /* ComingSoonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonCell.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F5665BA024C5A9D60066D560 /* SeasonList */ = {
+			isa = PBXGroup;
+			children = (
+				F5665BA124C5A9F40066D560 /* SeasonListController.swift */,
+			);
+			path = SeasonList;
+			sourceTree = "<group>";
+		};
 		F5CB08DA24C1D34700912F3D /* ComingSoon */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +104,7 @@
 				F5FD2A2224B31BD20013ACB8 /* SceneDelegate.swift */,
 				F52B88C524C065EE00F4DB63 /* MainTabBarController.swift */,
 				F5FD2A3424B31C5F0013ACB8 /* Home */,
+				F5665BA024C5A9D60066D560 /* SeasonList */,
 				F5CB08DA24C1D34700912F3D /* ComingSoon */,
 				F5FD2A4224B35EEE0013ACB8 /* Model */,
 				F5FD2A3724B31C980013ACB8 /* Extras */,
@@ -210,6 +221,7 @@
 				F52B88C624C065EE00F4DB63 /* MainTabBarController.swift in Sources */,
 				F5FD2A3D24B326BC0013ACB8 /* HomeCategoryHeader.swift in Sources */,
 				F5FD2A4124B3540C0013ACB8 /* HomeLayout.swift in Sources */,
+				F5665BA224C5A9F40066D560 /* SeasonListController.swift in Sources */,
 				F5FD2A4624B3605F0013ACB8 /* UIImage+Cache.swift in Sources */,
 				F5FD2A4824B3757E0013ACB8 /* HomePosterCell.swift in Sources */,
 				F5665B9F24C4A6F40066D560 /* Genre.swift in Sources */,
