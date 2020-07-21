@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol SeasonHeaderDelegate: AnyObject {
     func didCancelHeader()
@@ -53,6 +54,8 @@ class SeasonHeaderView: UICollectionReusableView {
         return lbl
     }()
     
+    private let playButton = SeasonHeaderButton(imageName: "play.fill", title: "Watch Now", backgroundColor: .white)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -82,6 +85,9 @@ class SeasonHeaderView: UICollectionReusableView {
         
         addSubview(infoLabel)
         infoLabel.anchor(top: mainPosterImageView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 24, left: 32, bottom: 0, right: 32))
+        
+        addSubview(playButton)
+        playButton.anchor(top: infoLabel.bottomAnchor, leading: infoLabel.leadingAnchor, bottom: nil, trailing: infoLabel.trailingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 0), size: .init(width: .zero, height: 40))
     }
     
     required init?(coder: NSCoder) {
