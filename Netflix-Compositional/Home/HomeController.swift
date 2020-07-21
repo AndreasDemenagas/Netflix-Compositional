@@ -190,7 +190,7 @@ class HomeController: UICollectionViewController {
         case 4:
             return onTheAir.count
         default:
-            return 20
+            return onTheAir.count
         }
     }
     
@@ -205,7 +205,7 @@ class HomeController: UICollectionViewController {
         
         if indexPath.section == 1 {
             let clipsCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeClipsCell.id, for: indexPath) as! HomeClipsCell
-            clipsCell.imageView.backgroundColor = .red
+            clipsCell.tvShow = onTheAir[indexPath.item]
             return clipsCell
         }
         
@@ -230,7 +230,7 @@ class HomeController: UICollectionViewController {
             posterCell.tvShow = onTheAir[indexPath.item]
         }
         
-        posterCell.imageView.backgroundColor = .systemBlue
+        posterCell.imageView.backgroundColor = .darkGray
         return posterCell
     }
 

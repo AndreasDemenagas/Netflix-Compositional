@@ -25,6 +25,7 @@ class HomeClipsCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = frame.width / 2
         imageView.layer.masksToBounds = true
         imageView.layer.borderColor = UIColor.systemYellow.cgColor
