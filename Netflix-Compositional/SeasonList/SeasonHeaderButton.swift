@@ -14,7 +14,6 @@ class SeasonHeaderButton: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
         label.font = UIFontMetrics.default.scaledFont(for: UIFont.boldSystemFont(ofSize: 18))
         return label
     }()
@@ -26,8 +25,10 @@ class SeasonHeaderButton: UIView {
         self.layer.cornerRadius = 5
         
         self.imageView.image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate)
-        self.imageView.tintColor = .black
+        self.imageView.tintColor = backgroundColor == .white ? .black : .white
+        
         self.titleLabel.text = title
+        self.titleLabel.textColor = backgroundColor == .white ? .black : .white
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalToConstant: 20).isActive = true

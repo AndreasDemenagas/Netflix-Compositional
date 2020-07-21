@@ -47,14 +47,16 @@ class SeasonHeaderView: UICollectionReusableView {
         let lbl = UILabel()
         lbl.textColor = .lightGray
         lbl.textAlignment = .center
-        let font =  UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 16, weight: .regular))
-        let attributedText = NSMutableAttributedString(string: "6.23 Agree", attributes: [NSAttributedString.Key.foregroundColor: UIColor.green, NSAttributedString.Key.font: font])
-        attributedText.append(.init(string: " • 2020 • 3 seasons", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: font]))
+        let normalFont =  UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 16, weight: .regular))
+        let boldFont =  UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 16, weight: .bold))
+        let attributedText = NSMutableAttributedString(string: "6.23 Agree", attributes: [NSAttributedString.Key.foregroundColor: UIColor.green, NSAttributedString.Key.font: boldFont])
+        attributedText.append(.init(string: " • 2020 • 3 Seasons", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: normalFont]))
         lbl.attributedText = attributedText
         return lbl
     }()
     
     private let playButton = SeasonHeaderButton(imageName: "play.fill", title: "Watch Now", backgroundColor: .white)
+    private let downloadButton = SeasonHeaderButton(imageName: "square.and.arrow.down", title: "Download Episode 1", backgroundColor: .darkGray)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,6 +90,9 @@ class SeasonHeaderView: UICollectionReusableView {
         
         addSubview(playButton)
         playButton.anchor(top: infoLabel.bottomAnchor, leading: infoLabel.leadingAnchor, bottom: nil, trailing: infoLabel.trailingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 0), size: .init(width: .zero, height: 40))
+        
+        addSubview(downloadButton)
+        downloadButton.anchor(top: playButton.bottomAnchor, leading: playButton.leadingAnchor, bottom: nil, trailing: playButton.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0), size: .init(width: .zero, height: 40))
     }
     
     required init?(coder: NSCoder) {

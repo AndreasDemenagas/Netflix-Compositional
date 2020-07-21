@@ -26,10 +26,10 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: view.frame.height / 2 + 100)
+        return .init(width: view.frame.width, height: view.frame.height / 2 + 75)
     }
     
-    func didCancelHeader() {
+    @objc func didCancelHeader() {
         dismiss(animated: true, completion: nil)
     }
     
