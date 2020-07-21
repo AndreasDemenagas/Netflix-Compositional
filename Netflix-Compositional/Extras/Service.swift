@@ -69,6 +69,7 @@ class Service {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-mm-dd"
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             do {
                 let results = try decoder.decode(T.self, from: data)

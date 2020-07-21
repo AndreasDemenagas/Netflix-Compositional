@@ -18,7 +18,7 @@ class ComingSoonCell: UICollectionViewCell {
     
     var show: TVShow? {
         didSet {
-            if let urlString = show?.backdrop_path {
+            if let urlString = show?.backdropPath {
                 backdropImageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
             }
             titleLabel.text = show?.name

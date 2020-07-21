@@ -16,7 +16,7 @@ class HomePosterCell: UICollectionViewCell {
     
     var tvShow: TVShow? {
         didSet {
-            if let urlString = tvShow?.poster_path {
+            if let urlString = tvShow?.posterPath {
                 imageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
             }
         }

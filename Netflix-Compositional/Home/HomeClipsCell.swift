@@ -16,7 +16,7 @@ class HomeClipsCell: UICollectionViewCell {
     
     var tvShow: TVShow? {
         didSet {
-            if let urlString = tvShow?.backdrop_path {
+            if let urlString = tvShow?.backdropPath {
                 imageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
             }
         }

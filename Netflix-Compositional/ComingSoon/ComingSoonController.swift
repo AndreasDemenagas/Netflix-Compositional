@@ -56,7 +56,7 @@ class ComingSoonController: UICollectionViewController {
                 print("Error fetching upcoming", error)
             case .success(let response):
                 self.comingSoon = response.results.filter({ (show) -> Bool in
-                    show.backdrop_path != nil
+                    show.backdropPath != nil
                 })
                 self.createSnapshot(with: self.comingSoon)
             }
