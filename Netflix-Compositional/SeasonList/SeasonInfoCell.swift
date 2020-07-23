@@ -30,20 +30,52 @@ class SeasonInfoCell: UICollectionViewCell {
         return label
     }()
     
-    private let checkmarkButton: UIImageView = {
-        let iv = UIImageView(image: UIImage(systemName: "checkmark"))
-        return iv
+    private let checkmarkButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        btn.tintColor = .white
+        return btn
     }()
     
-    private let likeButton: UIImageView = {
-        let iv = UIImageView(image: UIImage(systemName: "hand.thumbsup"))
-        return iv
+    private let listIconLabel: UILabel = {
+        let label = UILabel()
+        label.text = "In my list"
+        label.textColor = .lightGray
+        label.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 14))
+        return label
     }()
     
-    private let shareButton: UIImageView = {
-        let iv = UIImageView(image: UIImage(systemName: "square.and.arrow.up"))
-        return iv
+    private let ratingIconLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Rating"
+        label.textColor = .lightGray
+        label.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 14))
+        return label
     }()
+    
+    private let shareIconLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Share"
+        label.textColor = .lightGray
+        label.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 14))
+        return label
+    }()
+    
+    private let likeButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+        btn.tintColor = .white
+        return btn
+    }()
+    
+    private let shareButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        btn.tintColor = .white
+        return btn
+    }()
+    
+    private let separatorLine = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,12 +96,32 @@ class SeasonInfoCell: UICollectionViewCell {
         addSubview(descriptionLabel)
         descriptionLabel.anchor(top: titleLabel.bottomAnchor, leading: titleLabel.leadingAnchor, bottom: nil, trailing: titleLabel.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0))
         
-        let buttonStack = UIStackView(arrangedSubviews: [checkmarkButton, likeButton, shareButton])
+        let listStack = UIStackView(arrangedSubviews: [checkmarkButton, listIconLabel])
+        listStack.spacing = 12
+        listStack.alignment = .center
+        listStack.axis = .vertical
+        
+        let ratingStack = UIStackView(arrangedSubviews: [likeButton, ratingIconLabel])
+        ratingStack.spacing = 12
+        ratingStack.alignment = .center
+        ratingStack.axis = .vertical
+        
+        let shareStack = UIStackView(arrangedSubviews: [shareButton, shareIconLabel])
+        shareStack.spacing = 12
+        shareStack.alignment = .center
+        shareStack.axis = .vertical
+        
+        let buttonStack = UIStackView(arrangedSubviews: [listStack, ratingStack, shareStack])
         buttonStack.axis = .horizontal
+        buttonStack.alignment = .leading
         buttonStack.distribution = .fillEqually
         
         addSubview(buttonStack)
-        buttonStack.anchor(top: descriptionLabel.bottomAnchor, leading: titleLabel.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 24, left: 0, bottom: 0, right: 0), size: .init(width: 50, height: 20))
+        buttonStack.anchor(top: descriptionLabel.bottomAnchor, leading: titleLabel.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 32, left: 0, bottom: 0, right: 0), size: .init(width: frame.width * 0.65, height: 60))
+        
+        separatorLine.backgroundColor = .darkGray
+        addSubview(separatorLine)
+        separatorLine.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, size: .init(width: .zero, height: 3))
     }
     
 }
