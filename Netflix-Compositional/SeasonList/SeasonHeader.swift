@@ -19,6 +19,15 @@ class SeasonHeaderView: UICollectionReusableView {
     
     weak var delegate: SeasonHeaderDelegate?
     
+    var season: TVSeason? {
+        didSet {
+            if let urlString = season?.posterPath {
+                backgroundImageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
+                mainPosterImageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
+            }
+        }
+    }
+    
     private let backButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(systemName: "arrow.left"), for: .normal)
@@ -28,18 +37,17 @@ class SeasonHeaderView: UICollectionReusableView {
     }()
     
     private let backgroundImageView: UIImageView = {
-        let iv = UIImageView(image: #imageLiteral(resourceName: "ros_poster"))
+        let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         return iv
     }()
     
     private let mainPosterImageView: UIImageView = {
-        let iv = UIImageView(image: #imageLiteral(resourceName: "ros_poster"))
-        iv.contentMode = .scaleAspectFit
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
         iv.layer.cornerRadius = 5
         iv.layer.masksToBounds = true
-        iv.backgroundColor = .red
         return iv
     }()
     

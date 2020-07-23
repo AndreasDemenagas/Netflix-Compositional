@@ -12,6 +12,12 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
     
     var tvShow: TVShow?
     
+    var tvSeason: TVSeason? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,8 +26,21 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
         collectionView.register(SeasonInfoCell.self, forCellWithReuseIdentifier: SeasonInfoCell.id)
     }
     
+    func fetchShowSeason(id: Int, completion: @escaping () -> ()) {
+        Service.shared.fetchTVSeason(id: id) { (result) in
+            switch result {
+            case .failure(let error):
+                print("Error fetching season", error)
+            case .success(let response):
+                self.tvSeason = response
+                completion()
+            }
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let seasonHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SeasonHeaderView.id, for: indexPath) as! SeasonHeaderView
+        seasonHeader.season = tvSeason
         seasonHeader.delegate = self
         return seasonHeader
     }

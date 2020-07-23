@@ -26,6 +26,8 @@ class HomeController: UICollectionViewController {
     var topRated = [TVShow]()
     var onTheAir = [TVShow]()
     
+    var allShows = [[TVShow]]()
+    
     var categories = [
         HomeCategories.topBanner.rawValue,
         HomeCategories.clips.rawValue,
@@ -72,6 +74,7 @@ class HomeController: UICollectionViewController {
         }
         
         group.notify(queue: .main) {
+            self.allShows = [self.bannerShows, self.onTheAir, self.continueWatching, self.popular, self.topRated, self.onTheAir]
             self.collectionView.reloadData()
         }
     }
@@ -162,9 +165,13 @@ class HomeController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let show = allShows[indexPath.section][indexPath.item]
         let seasonListController = SeasonListController(collectionViewLayout: UICollectionViewFlowLayout())
         seasonListController.modalPresentationStyle = .fullScreen
-        present(seasonListController, animated: true, completion: nil)
+        seasonListController.tvShow = show
+        seasonListController.fetchShowSeason(id: show.id) {
+            self.present(seasonListController, animated: true)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

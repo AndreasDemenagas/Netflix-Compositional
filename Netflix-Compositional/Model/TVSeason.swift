@@ -14,6 +14,6 @@ struct TVSeason: Codable {
     let name: String
     let numberOfSeasons: Int
     let firstAirDate: String
-    let voteAverage: Int
+    let voteAverage: Double
     let posterPath: String
 }
