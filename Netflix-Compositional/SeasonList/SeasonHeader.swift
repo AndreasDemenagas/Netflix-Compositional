@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 protocol SeasonHeaderDelegate: AnyObject {
     func didCancelHeader()
@@ -25,6 +24,7 @@ class SeasonHeaderView: UICollectionReusableView {
                 backgroundImageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
                 mainPosterImageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
             }
+            infoLabel.attributedText = getInfoText(rating: season?.voteAverage ?? 0.0, seasons: season?.numberOfSeasons ?? 0 , airDate: nil)
         }
     }
     
@@ -55,13 +55,16 @@ class SeasonHeaderView: UICollectionReusableView {
         let lbl = UILabel()
         lbl.textColor = .lightGray
         lbl.textAlignment = .center
-        let normalFont =  UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 16, weight: .regular))
-        let boldFont =  UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 16, weight: .bold))
-        let attributedText = NSMutableAttributedString(string: "6.23 Agree", attributes: [NSAttributedString.Key.foregroundColor: UIColor.green, NSAttributedString.Key.font: boldFont])
-        attributedText.append(.init(string: " • 2020 • 3 Seasons", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: normalFont]))
-        lbl.attributedText = attributedText
         return lbl
     }()
+    
+    private func getInfoText(rating: Double, seasons: Int, airDate: String?) -> NSMutableAttributedString {
+        let normalFont =  UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 16, weight: .regular))
+        let boldFont =  UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 16, weight: .bold))
+        let attributedText = NSMutableAttributedString(string: "\(rating) Agree", attributes: [NSAttributedString.Key.foregroundColor: UIColor.green, NSAttributedString.Key.font: boldFont])
+        attributedText.append(.init(string: " • 2020 • \(seasons) Seasons", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: normalFont]))
+        return attributedText
+    }
     
     private let playButton = SeasonHeaderButton(imageName: "play.fill", title: "Watch Now", backgroundColor: .white)
     private let downloadButton = SeasonHeaderButton(imageName: "square.and.arrow.down", title: "Download Episode 1", backgroundColor: .darkGray)
