@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ComingSoonCell: UICollectionViewCell {
+class ComingSoonCell: UITableViewCell {
     
     static var id = String(describing: self)
     
@@ -72,9 +72,9 @@ class ComingSoonCell: UICollectionViewCell {
         return lbl
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .black
         setupViews()
     }
     

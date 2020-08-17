@@ -8,21 +8,13 @@
 
 import UIKit
 
-class ComingSoonController: UICollectionViewController {
-    
-    init() {
-        super.init(collectionViewLayout: UICollectionViewCompositionalLayout.createComingSoonLayout())
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+class ComingSoonController: UITableViewController {
     
     private enum Section {
         case main
     }
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, TVShow>?
+    private var dataSource: UITableViewDiffableDataSource<Section, TVShow>?
     
     var allGenres = GenreBank()
     
@@ -33,16 +25,18 @@ class ComingSoonController: UICollectionViewController {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "nav-icon"))
         imageView.contentMode = .scaleAspectFill
         navigationItem.titleView = imageView
-        
-        collectionView.register(ComingSoonCell.self, forCellWithReuseIdentifier: ComingSoonCell.id)
+
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 500
+        tableView.register(ComingSoonCell.self, forCellReuseIdentifier: ComingSoonCell.id)
         
         setupDataSource()
         fetchComingSoon()
     }
     
     fileprivate func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, TVShow>(collectionView: collectionView, cellProvider: { (cv, indexPath, tvShow) -> UICollectionViewCell? in
-            let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: ComingSoonCell.id, for: indexPath) as! ComingSoonCell
+        dataSource = UITableViewDiffableDataSource<Section, TVShow>(tableView: tableView, cellProvider: { (tableVew, indexPath, tvShow) -> UITableViewCell? in
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: ComingSoonCell.id, for: indexPath) as! ComingSoonCell
             cell.allGenres = self.allGenres
             cell.show = tvShow
             return cell
@@ -61,6 +55,16 @@ class ComingSoonController: UICollectionViewController {
                 self.createSnapshot(with: self.comingSoon)
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let showPlot = dataSource?.itemIdentifier(for: indexPath)?.overview else {
+            return 500
+        }
+        let rect = NSString(string: showPlot).boundingRect(with: CGSize(width: view.frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)], context: nil)
+        let imageViewHeight = view.frame.width * 0.56
+        let cellHeight = imageViewHeight + 40 + 20 + 20 + rect.height + 20
+        return cellHeight
     }
     
     fileprivate func createSnapshot(with shows: [TVShow]) {

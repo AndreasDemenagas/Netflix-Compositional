@@ -9,7 +9,7 @@
 import UIKit
 
 extension UICollectionViewCompositionalLayout {
-    
+    #warning("Delete this if use TableView Instead...")
     static func createComingSoonLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
