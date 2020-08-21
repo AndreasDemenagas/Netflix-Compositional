@@ -19,6 +19,7 @@
 		F5CB08DC24C1D36500912F3D /* ComingSoonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DB24C1D36500912F3D /* ComingSoonController.swift */; };
 		F5CB08DE24C1D40B00912F3D /* ComingSoonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DD24C1D40B00912F3D /* ComingSoonLayout.swift */; };
 		F5CB08E024C1DA3E00912F3D /* ComingSoonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DF24C1DA3E00912F3D /* ComingSoonCell.swift */; };
+		F5EF502624EFE4DA00BAED32 /* TVEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EF502524EFE4DA00BAED32 /* TVEpisode.swift */; };
 		F5FD2A2124B31BD20013ACB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A2024B31BD20013ACB8 /* AppDelegate.swift */; };
 		F5FD2A2324B31BD20013ACB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A2224B31BD20013ACB8 /* SceneDelegate.swift */; };
 		F5FD2A2A24B31BD30013ACB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5FD2A2924B31BD30013ACB8 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		F5CB08DB24C1D36500912F3D /* ComingSoonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonController.swift; sourceTree = "<group>"; };
 		F5CB08DD24C1D40B00912F3D /* ComingSoonLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonLayout.swift; sourceTree = "<group>"; };
 		F5CB08DF24C1DA3E00912F3D /* ComingSoonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonCell.swift; sourceTree = "<group>"; };
+		F5EF502524EFE4DA00BAED32 /* TVEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVEpisode.swift; sourceTree = "<group>"; };
 		F5FD2A1D24B31BD20013ACB8 /* Netflix-Compositional.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netflix-Compositional.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5FD2A2024B31BD20013ACB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5FD2A2224B31BD20013ACB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				F5FD2A4324B35F030013ACB8 /* TVShow.swift */,
 				F5665B9E24C4A6F40066D560 /* Genre.swift */,
 				F59DEC4224C6E52900EEDEF5 /* TVSeason.swift */,
+				F5EF502524EFE4DA00BAED32 /* TVEpisode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				F5FD2A3924B31CA80013ACB8 /* Extension_LayoutAnchors.swift in Sources */,
 				F52B88C624C065EE00F4DB63 /* MainTabBarController.swift in Sources */,
 				F5FD2A3D24B326BC0013ACB8 /* HomeCategoryHeader.swift in Sources */,
+				F5EF502624EFE4DA00BAED32 /* TVEpisode.swift in Sources */,
 				F5FD2A4124B3540C0013ACB8 /* HomeLayout.swift in Sources */,
 				F5665BA224C5A9F40066D560 /* SeasonListController.swift in Sources */,
 				F5FD2A4624B3605F0013ACB8 /* UIImage+Cache.swift in Sources */,

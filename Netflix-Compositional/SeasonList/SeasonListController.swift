@@ -58,7 +58,8 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeasonInfoCell.id, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeasonInfoCell.id, for: indexPath) as! SeasonInfoCell
+        cell.tvseason = tvSeason
         return cell
     }
     

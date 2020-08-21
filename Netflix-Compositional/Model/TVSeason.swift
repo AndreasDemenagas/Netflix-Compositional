@@ -17,6 +17,7 @@ struct TVSeason: Codable {
     let voteAverage: Double
     let posterPath: String
     
+    let lastEpisodeToAir: TVEpisode
     
     func getFirstAirYear() -> String {
         let formatter = DateFormatter()

@@ -77,6 +77,14 @@ class SeasonInfoCell: UICollectionViewCell {
     
     private let separatorLine = UIView()
     
+    var tvseason: TVSeason? {
+        didSet {
+            guard let title = tvseason?.lastEpisodeToAir.name, let overview = tvseason?.lastEpisodeToAir.overview else { return }
+            titleLabel.text = "\"\(title)\""
+            descriptionLabel.text = overview
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -88,7 +96,6 @@ class SeasonInfoCell: UICollectionViewCell {
     }
     
     fileprivate func setupViews() {
-//        backgroundColor = .systemPink
         
         addSubview(titleLabel)
         titleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 16, left: 32, bottom: 0, right: 32))
