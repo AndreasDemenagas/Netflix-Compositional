@@ -14,6 +14,13 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
     
     var tvSeason: TVSeason? {
         didSet {
+            fetchSeasonEpisodes()
+        }
+    }
+    
+    var seasonEpisodes: [TVEpisode]? {
+        didSet {
+            print("AAA")
             collectionView.reloadData()
         }
     }
@@ -39,6 +46,18 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
         }
     }
     
+    func fetchSeasonEpisodes() {
+        guard let showId = tvSeason?.id else { return }
+        Service.shared.fetchTVEpisodes(showId: showId, seasonNumber: 1) { (result) in
+            switch result {
+            case .failure(let error):
+                print("Error fetching season", error)
+            case .success(let response):
+                self.seasonEpisodes = response.episodes
+            }
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let seasonHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SeasonHeaderView.id, for: indexPath) as! SeasonHeaderView
         seasonHeader.season = tvSeason
@@ -60,7 +79,7 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return section == 0 ? 1 : 10
+        return section == 0 ? 1 : seasonEpisodes?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
