@@ -98,7 +98,7 @@ class SeasonInfoCell: UICollectionViewCell {
     fileprivate func setupViews() {
         
         addSubview(titleLabel)
-        titleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 16, left: 32, bottom: 0, right: 32))
+        titleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 16, left: 32, bottom: 0, right: 32), size: .init(width: .zero, height: 20))
         
         addSubview(descriptionLabel)
         descriptionLabel.anchor(top: titleLabel.bottomAnchor, leading: titleLabel.leadingAnchor, bottom: nil, trailing: titleLabel.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0))
@@ -124,7 +124,7 @@ class SeasonInfoCell: UICollectionViewCell {
         buttonStack.distribution = .fillEqually
         
         addSubview(buttonStack)
-        buttonStack.anchor(top: descriptionLabel.bottomAnchor, leading: titleLabel.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 32, left: 0, bottom: 0, right: 0), size: .init(width: frame.width * 0.65, height: 60))
+        buttonStack.anchor(top: descriptionLabel.bottomAnchor, leading: titleLabel.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 0, bottom: 0, right: 0), size: .init(width: frame.width * 0.65, height: 60))
         
         separatorLine.backgroundColor = .darkGray
         addSubview(separatorLine)

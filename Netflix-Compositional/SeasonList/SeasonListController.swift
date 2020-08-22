@@ -64,7 +64,17 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 280)
+        
+        let cellHeight: CGFloat = 16 + 20 + 12 + 32 + 60 + 3 + 12
+        
+        if let text = tvSeason?.lastEpisodeToAir.overview {
+           
+            let rect = NSString(string: text).boundingRect(with: CGSize(width: view.frame.width, height: 2000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], context: nil)
+            
+            return .init(width: view.frame.width, height: cellHeight + rect.height)
+        }
+        
+        return .init(width: view.frame.width, height: cellHeight + 20)
     }
     
 }
