@@ -8,7 +8,15 @@
 
 import Foundation
 
+struct EpisodesResponse: Codable {
+    let id: String
+    let airDate: String
+    let episodes: [TVEpisode]
+}
+
 struct TVEpisode: Codable {
     let name: String
     let overview: String
+    let episodeNumber: String
+    let stillPath: String
 }

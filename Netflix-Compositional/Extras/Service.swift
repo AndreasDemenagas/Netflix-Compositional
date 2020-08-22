@@ -14,6 +14,10 @@ class Service {
     
     private init() {}
     
+    func fetchTVEpisodes(showId: Int, seasonNumber: Int, completion: @escaping (Result<EpisodesResponse, Error>) -> () ) {
+        
+    }
+    
     func fetchTVSeason(id: Int, completion: @escaping (Result<TVSeason, Error>) -> () ) {
         let urlString = "https://api.themoviedb.org/3/tv/\(id)?api_key=8708e6e442f4c7d558ae6aa51d79152b"
         print(urlString)
