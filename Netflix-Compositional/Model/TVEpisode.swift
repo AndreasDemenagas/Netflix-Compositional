@@ -19,4 +19,5 @@ struct TVEpisode: Codable {
     let overview: String
     let episodeNumber: Int
     let stillPath: String
+    let voteAverage: Double
 }

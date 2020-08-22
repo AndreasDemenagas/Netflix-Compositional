@@ -91,7 +91,7 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
         }
         
         let episodeCell = collectionView.dequeueReusableCell(withReuseIdentifier: SeasonListEpisodeCell.id, for: indexPath) as! SeasonListEpisodeCell
-        
+        episodeCell.episode = seasonEpisodes?[indexPath.item]
         return episodeCell
     }
     
@@ -104,7 +104,7 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
             }
         }
         
-        return .init(width: view.frame.width, height: 100)
+        return .init(width: view.frame.width, height: 500)
     }
     
     fileprivate func getInfoCellHeight(for text: String) -> CGFloat {
