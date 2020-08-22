@@ -24,6 +24,7 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
         collectionView.contentInset.top = -(UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
         collectionView.register(SeasonHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SeasonHeaderView.id)
         collectionView.register(SeasonInfoCell.self, forCellWithReuseIdentifier: SeasonInfoCell.id)
+        collectionView.register(SeasonListEpisodeCell.self, forCellWithReuseIdentifier: SeasonListEpisodeCell.id)
     }
     
     func fetchShowSeason(id: Int, completion: @escaping () -> ()) {
@@ -46,35 +47,51 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: view.frame.height / 2 + 75)
+        let headerSize = CGSize.init(width: view.frame.width, height: view.frame.height / 2 + 75)
+        return section == 0 ? headerSize : .zero
     }
     
     @objc func didCancelHeader() {
         dismiss(animated: true, completion: nil)
     }
     
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return section == 0 ? 1 : 10
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeasonInfoCell.id, for: indexPath) as! SeasonInfoCell
-        cell.tvseason = tvSeason
-        return cell
+
+        if indexPath.section == 0 {
+            let infoCell = collectionView.dequeueReusableCell(withReuseIdentifier: SeasonInfoCell.id, for: indexPath) as! SeasonInfoCell
+            infoCell.tvseason = tvSeason
+            return infoCell
+        }
+        
+        let episodeCell = collectionView.dequeueReusableCell(withReuseIdentifier: SeasonListEpisodeCell.id, for: indexPath) as! SeasonListEpisodeCell
+        
+        return episodeCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellHeight: CGFloat = 16 + 20 + 12 + 32 + 60 + 3 + 12
-        
-        if let text = tvSeason?.lastEpisodeToAir.overview {
-           
-            let rect = NSString(string: text).boundingRect(with: CGSize(width: view.frame.width, height: 2000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], context: nil)
-            
-            return .init(width: view.frame.width, height: cellHeight + rect.height)
+        if indexPath.section == 0 {
+            if let text = tvSeason?.lastEpisodeToAir.overview {
+                let cellHeight = getInfoCellHeight(for: text)
+                return .init(width: view.frame.width, height: cellHeight)
+            }
         }
         
-        return .init(width: view.frame.width, height: cellHeight + 20)
+        return .init(width: view.frame.width, height: 100)
+    }
+    
+    fileprivate func getInfoCellHeight(for text: String) -> CGFloat {
+        let knownCellHeight: CGFloat = 16 + 20 + 12 + 32 + 60 + 3 + 12
+        let rect = NSString(string: text).boundingRect(with: CGSize(width: view.frame.width, height: 2000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], context: nil)
+        return knownCellHeight + rect.height
     }
     
 }

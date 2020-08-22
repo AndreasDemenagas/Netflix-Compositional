@@ -7,19 +7,19 @@
 //
 
 import UIKit
-
-extension UICollectionViewCompositionalLayout {
-    #warning("Delete this if use TableView Instead...")
-    static func createComingSoonLayout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
-            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-            item.contentInsets.bottom = 16
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(650)), subitems: [item])
-            let section = NSCollectionLayoutSection(group: group)
-            return section
-        }
-        
-        return layout
-    }
-    
-}
+//
+//extension UICollectionViewCompositionalLayout {
+//    #warning("Delete this if use TableView Instead...")
+//    static func createComingSoonLayout() -> UICollectionViewCompositionalLayout {
+//        let layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+//            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+//            item.contentInsets.bottom = 16
+//            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(650)), subitems: [item])
+//            let section = NSCollectionLayoutSection(group: group)
+//            return section
+//        }
+//        
+//        return layout
+//    }
+//    
+//}

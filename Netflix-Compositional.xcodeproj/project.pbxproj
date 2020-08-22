@@ -13,6 +13,7 @@
 		F5665BA424C5AB030066D560 /* HomeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5665BA324C5AB030066D560 /* HomeCategories.swift */; };
 		F5665BA624C5BFA90066D560 /* HomeClipsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5665BA524C5BFA90066D560 /* HomeClipsCell.swift */; };
 		F5896C3724C84C8F00C52A06 /* SeasonInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5896C3624C84C8F00C52A06 /* SeasonInfoCell.swift */; };
+		F58EB2A724F1B52C001D3152 /* SeasonListEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58EB2A624F1B52C001D3152 /* SeasonListEpisodeCell.swift */; };
 		F59DEC4324C6E52900EEDEF5 /* TVSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59DEC4224C6E52900EEDEF5 /* TVSeason.swift */; };
 		F59DEC4524C6EE8C00EEDEF5 /* SeasonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59DEC4424C6EE8C00EEDEF5 /* SeasonHeader.swift */; };
 		F59DEC4924C7045C00EEDEF5 /* SeasonHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59DEC4824C7045C00EEDEF5 /* SeasonHeaderButton.swift */; };
@@ -42,6 +43,7 @@
 		F5665BA324C5AB030066D560 /* HomeCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategories.swift; sourceTree = "<group>"; };
 		F5665BA524C5BFA90066D560 /* HomeClipsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClipsCell.swift; sourceTree = "<group>"; };
 		F5896C3624C84C8F00C52A06 /* SeasonInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonInfoCell.swift; sourceTree = "<group>"; };
+		F58EB2A624F1B52C001D3152 /* SeasonListEpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListEpisodeCell.swift; sourceTree = "<group>"; };
 		F59DEC4224C6E52900EEDEF5 /* TVSeason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeason.swift; sourceTree = "<group>"; };
 		F59DEC4424C6EE8C00EEDEF5 /* SeasonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonHeader.swift; sourceTree = "<group>"; };
 		F59DEC4824C7045C00EEDEF5 /* SeasonHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonHeaderButton.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				F59DEC4424C6EE8C00EEDEF5 /* SeasonHeader.swift */,
 				F59DEC4824C7045C00EEDEF5 /* SeasonHeaderButton.swift */,
 				F5896C3624C84C8F00C52A06 /* SeasonInfoCell.swift */,
+				F58EB2A624F1B52C001D3152 /* SeasonListEpisodeCell.swift */,
 			);
 			path = SeasonList;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				F5FD2A3D24B326BC0013ACB8 /* HomeCategoryHeader.swift in Sources */,
 				F5EF502624EFE4DA00BAED32 /* TVEpisode.swift in Sources */,
 				F5FD2A4124B3540C0013ACB8 /* HomeLayout.swift in Sources */,
+				F58EB2A724F1B52C001D3152 /* SeasonListEpisodeCell.swift in Sources */,
 				F5665BA224C5A9F40066D560 /* SeasonListController.swift in Sources */,
 				F5FD2A4624B3605F0013ACB8 /* UIImage+Cache.swift in Sources */,
 				F5FD2A4824B3757E0013ACB8 /* HomePosterCell.swift in Sources */,
