@@ -31,6 +31,12 @@ class SeasonListEpisodeCell: UICollectionViewCell  {
         return iv
     }()
     
+    private let downloadImageView: UIImageView = {
+        let iv = UIImageView(image: UIImage.init(systemName: "square.and.arrow.down")?.withRenderingMode(.alwaysTemplate))
+        iv.tintColor = .white
+        return iv
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -64,8 +70,12 @@ class SeasonListEpisodeCell: UICollectionViewCell  {
         labelsStack.alignment = .top
         labelsStack.translatesAutoresizingMaskIntoConstraints = false
         
+        addSubview(downloadImageView)
+        downloadImageView.anchor(top: photoImageView.topAnchor, leading: nil, bottom: nil, trailing: trailingAnchor, padding: .init(top: 24, left: 0, bottom: 0, right: 16), size: .init(width: 30, height: 30))
+        
         addSubview(labelsStack)
-        labelsStack.anchor(top: photoImageView.topAnchor, leading: photoImageView.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 8, left: 8, bottom: 0, right: 8), size: .init(width: .zero, height: photoImageView.frame.height))
+        labelsStack.anchor(top: photoImageView.topAnchor, leading: photoImageView.trailingAnchor, bottom: nil, trailing: downloadImageView.leadingAnchor, padding: .init(top: 8, left: 8, bottom: 0, right: 8), size: .init(width: .zero, height: photoImageView.frame.height))
+        
     }
     
     required init?(coder: NSCoder) {
