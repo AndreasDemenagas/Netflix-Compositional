@@ -37,6 +37,13 @@ class SeasonListEpisodeCell: UICollectionViewCell  {
         return iv
     }()
     
+    private let playImageView: UIImageView = {
+        let iv = UIImageView(image: UIImage.init(systemName: "play.circle")?.withRenderingMode(.alwaysTemplate))
+        iv.tintColor = .white
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -63,6 +70,12 @@ class SeasonListEpisodeCell: UICollectionViewCell  {
         
         addSubview(photoImageView)
         photoImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 16, left: 8, bottom: 0, right: 0), size: .init(width: imageWidth, height: imageWidth/1.77))
+        
+        addSubview(playImageView)
+        playImageView.centerYAnchor.constraint(equalTo: photoImageView.centerYAnchor).isActive = true
+        playImageView.centerXAnchor.constraint(equalTo: photoImageView.centerXAnchor).isActive = true
+        playImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        playImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         
         let labelsStack = UIStackView(arrangedSubviews: [titleLabel, voteLabel])
         labelsStack.axis = .vertical
