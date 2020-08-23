@@ -14,8 +14,8 @@ class SeasonListEpisodeCell: UICollectionViewCell  {
     
     var episode: TVEpisode? {
         didSet {
-            titleLabel.text = episode?.name
-            if let urlString = episode?.stillPath, let voteAvg = episode?.voteAverage {
+            if let urlString = episode?.stillPath, let voteAvg = episode?.voteAverage, let name = episode?.name, let epNumber = episode?.episodeNumber {
+                titleLabel.text = "\(epNumber). \(name)"
                 photoImageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
                 voteLabel.text = "\(Int(voteAvg))/10"
             }
