@@ -104,7 +104,7 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
             }
         }
         
-        return .init(width: view.frame.width, height: 150)
+        return .init(width: view.frame.width, height: 180)
     }
     
     fileprivate func getInfoCellHeight(for text: String) -> CGFloat {

@@ -19,6 +19,7 @@ class SeasonListEpisodeCell: UICollectionViewCell  {
                 photoImageView.loadImageFromCacheOrDownload(urlString: "https://image.tmdb.org/t/p/w500/\(urlString)")
                 voteLabel.text = "\(Int(voteAvg))/10"
             }
+            outlineLabel.text = episode?.overview
         }
     }
     
@@ -59,6 +60,15 @@ class SeasonListEpisodeCell: UICollectionViewCell  {
         return label
     }()
     
+    private let outlineLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingTail
+        label.textColor = .lightGray
+        label.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 16))
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -89,6 +99,8 @@ class SeasonListEpisodeCell: UICollectionViewCell  {
         addSubview(labelsStack)
         labelsStack.anchor(top: photoImageView.topAnchor, leading: photoImageView.trailingAnchor, bottom: nil, trailing: downloadImageView.leadingAnchor, padding: .init(top: 8, left: 8, bottom: 0, right: 8), size: .init(width: .zero, height: photoImageView.frame.height))
         
+        addSubview(outlineLabel)
+        outlineLabel.anchor(top: photoImageView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 8, left: 8, bottom: 0, right: 16), size: .init(width: .zero, height: 70))
     }
     
     required init?(coder: NSCoder) {
