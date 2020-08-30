@@ -120,7 +120,7 @@ class SeasonInfoCell: UICollectionViewCell {
         
         let buttonStack = UIStackView(arrangedSubviews: [listStack, ratingStack, shareStack])
         buttonStack.axis = .horizontal
-        buttonStack.alignment = .leading
+//        buttonStack.alignment = .leading
         buttonStack.distribution = .fillEqually
         
         addSubview(buttonStack)
