@@ -66,7 +66,11 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerSize = CGSize.init(width: view.frame.width, height: view.frame.height / 2 + 100)
+        // Using a fixed height to support all screen sizes. Possible future improvement...
+        // Uncomment the line below to revert to the all solution. (Better for iPhone 11/12 testing but don't support all phone sizes). 
+        //let headerSize = CGSize.init(width: view.frame.width, height: view.frame.height / 2 + 100)
+        let height: CGFloat = 300 + 62 + 24 + 16 + 40 + 40 + 12 + 25
+        let headerSize = CGSize.init(width: view.frame.width, height: height)
         return section == 0 ? headerSize : .zero
     }
     
