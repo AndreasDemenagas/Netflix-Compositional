@@ -66,7 +66,7 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerSize = CGSize.init(width: view.frame.width, height: view.frame.height / 2 + 75)
+        let headerSize = CGSize.init(width: view.frame.width, height: view.frame.height / 2 + 100)
         return section == 0 ? headerSize : .zero
     }
     
@@ -104,7 +104,7 @@ class SeasonListController: UICollectionViewController, UICollectionViewDelegate
             }
         }
         
-        return .init(width: view.frame.width, height: 180)
+        return .init(width: view.frame.width, height: 150)
     }
     
     fileprivate func getInfoCellHeight(for text: String) -> CGFloat {
