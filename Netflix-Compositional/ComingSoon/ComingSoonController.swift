@@ -28,6 +28,7 @@ class ComingSoonController: UITableViewController {
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
+        tableView.allowsSelection = false 
         tableView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
         tableView.register(ComingSoonCell.self, forCellReuseIdentifier: ComingSoonCell.id)
         
