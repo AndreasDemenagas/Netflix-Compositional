@@ -15,49 +15,49 @@ class Service {
     private init() {}
     
     func fetchTVEpisodes(showId: Int, seasonNumber: Int, completion: @escaping (Result<EpisodesResponse, Error>) -> () ) {
-        let urlString = "https://api.themoviedb.org/3/tv/\(showId)/season/\(seasonNumber)?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        let urlString = "https://api.themoviedb.org/3/tv/\(showId)/season/\(seasonNumber)?api_key=\(API_KEY)"
         fetchData(urlString: urlString, completion: completion)
     }
     
     func fetchTVSeason(id: Int, completion: @escaping (Result<TVSeason, Error>) -> () ) {
-        let urlString = "https://api.themoviedb.org/3/tv/\(id)?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        let urlString = "https://api.themoviedb.org/3/tv/\(id)?api_key=\(API_KEY)"
         fetchData(urlString: urlString, completion: completion)
     }
     
     func fetchGenreList(completion: @escaping (Result<GenreResponse, Error>) -> () ) {
-        let urlString = "https://api.themoviedb.org/3/genre/tv/list?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        let urlString = "https://api.themoviedb.org/3/genre/tv/list?api_key=\(API_KEY)"
         fetchData(urlString: urlString, completion: completion)
     }
     
     func fetchComingSoon(completion: @escaping (Result<APIResponse, Error>) -> () ) {
-        let urlString = "https://api.themoviedb.org/3/tv/airing_today?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        let urlString = "https://api.themoviedb.org/3/tv/airing_today?api_key=\(API_KEY)"
         fetchData(urlString: urlString, completion: completion)
     }
     
     func fetchBannerShows(completion: @escaping (Result<APIResponse, Error>) -> ()) {
-        let urlString = "https://api.themoviedb.org/3/search/tv?api_key=8708e6e442f4c7d558ae6aa51d79152b&page=1&query=star%20wars"
+        let urlString = "https://api.themoviedb.org/3/search/tv?api_key=\(API_KEY)&page=1&query=star%20wars"
         fetchData(urlString: urlString, completion: completion)
     }
     
     func fetchContinueWatching(completion: @escaping (Result<APIResponse, Error>) -> ()) {
-        let urlString = "https://api.themoviedb.org/3/search/tv?api_key=8708e6e442f4c7d558ae6aa51d79152b&page=1&query=the"
+        let urlString = "https://api.themoviedb.org/3/search/tv?api_key=\(API_KEY)&page=1&query=the"
         fetchData(urlString: urlString, completion: completion)
     }
     
     func fetchPopularShows(completion: @escaping (Result<APIResponse, Error>) -> ()) {
-        let urlString = "https://api.themoviedb.org/3/tv/popular?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        let urlString = "https://api.themoviedb.org/3/tv/popular?api_key=\(API_KEY)"
         
         fetchData(urlString: urlString, completion: completion)
     }
     
     func fetchTopRatedShows(completion: @escaping (Result<APIResponse, Error>) -> ()) {
-        let urlString = "https://api.themoviedb.org/3/tv/top_rated?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        let urlString = "https://api.themoviedb.org/3/tv/top_rated?api_key=\(API_KEY)"
         
         fetchData(urlString: urlString, completion: completion)
     }
     
     func fetchOnTheAirShows(completion: @escaping (Result<APIResponse, Error>) -> ()) {
-        let urlString = "https://api.themoviedb.org/3/tv/on_the_air?api_key=8708e6e442f4c7d558ae6aa51d79152b"
+        let urlString = "https://api.themoviedb.org/3/tv/on_the_air?api_key=\(API_KEY)"
         
         fetchData(urlString: urlString, completion: completion)
     }

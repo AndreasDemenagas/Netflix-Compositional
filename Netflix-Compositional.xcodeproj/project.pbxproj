@@ -19,6 +19,7 @@
 		F59DEC4924C7045C00EEDEF5 /* SeasonHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59DEC4824C7045C00EEDEF5 /* SeasonHeaderButton.swift */; };
 		F5CB08DC24C1D36500912F3D /* ComingSoonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DB24C1D36500912F3D /* ComingSoonController.swift */; };
 		F5CB08E024C1DA3E00912F3D /* ComingSoonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB08DF24C1DA3E00912F3D /* ComingSoonCell.swift */; };
+		F5ECF75926F3479800B38576 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ECF75826F3479800B38576 /* Constants.swift */; };
 		F5EF502624EFE4DA00BAED32 /* TVEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EF502524EFE4DA00BAED32 /* TVEpisode.swift */; };
 		F5FD2A2124B31BD20013ACB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A2024B31BD20013ACB8 /* AppDelegate.swift */; };
 		F5FD2A2324B31BD20013ACB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD2A2224B31BD20013ACB8 /* SceneDelegate.swift */; };
@@ -48,6 +49,7 @@
 		F59DEC4824C7045C00EEDEF5 /* SeasonHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonHeaderButton.swift; sourceTree = "<group>"; };
 		F5CB08DB24C1D36500912F3D /* ComingSoonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonController.swift; sourceTree = "<group>"; };
 		F5CB08DF24C1DA3E00912F3D /* ComingSoonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonCell.swift; sourceTree = "<group>"; };
+		F5ECF75826F3479800B38576 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F5EF502524EFE4DA00BAED32 /* TVEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVEpisode.swift; sourceTree = "<group>"; };
 		F5FD2A1D24B31BD20013ACB8 /* Netflix-Compositional.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netflix-Compositional.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5FD2A2024B31BD20013ACB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				F5FD2A3A24B31CC20013ACB8 /* Service.swift */,
 				F5FD2A3824B31CA80013ACB8 /* Extension_LayoutAnchors.swift */,
 				F5FD2A4524B3605F0013ACB8 /* UIImage+Cache.swift */,
+				F5ECF75826F3479800B38576 /* Constants.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5ECF75926F3479800B38576 /* Constants.swift in Sources */,
 				F5FD2A3F24B340750013ACB8 /* HomeBannerCell.swift in Sources */,
 				F59DEC4524C6EE8C00EEDEF5 /* SeasonHeader.swift in Sources */,
 				F5FD2A3924B31CA80013ACB8 /* Extension_LayoutAnchors.swift in Sources */,
