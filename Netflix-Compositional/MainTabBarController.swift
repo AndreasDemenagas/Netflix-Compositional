@@ -16,13 +16,22 @@ class MainTabBarController: UITabBarController {
         tabBar.barStyle = .black
         tabBar.tintColor = .white
         
+        tabBar.isOpaque = true
+        tabBar.isTranslucent = false
+        
         let homeController = navigationController(viewController: HomeController(), imageName: "house", title: "Home")
         let comingSoonController = navigationController(viewController: ComingSoonController(), imageName: "calendar", title: "Coming Soon")
         let downloadsController = navigationController(viewController: UIViewController(), imageName: "square.and.arrow.down", title: "Downloads")
         let listController = navigationController(viewController: UIViewController(), imageName: "tv", title: "My List")
         let moreController = navigationController(viewController: UIViewController(), imageName: "ellipsis.circle", title: "More")
         
-        viewControllers = [homeController, listController, comingSoonController, downloadsController, moreController]
+        viewControllers = [
+            homeController,
+            listController,
+            comingSoonController,
+            downloadsController,
+            moreController
+        ]
     }
     
     

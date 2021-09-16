@@ -28,6 +28,7 @@ class ComingSoonCell: UITableViewCell {
             if let genres = show?.genre_ids {
                 var genreText = ""
                 for id in genres {
+                    print(id)
                     let genre = allGenres?.dictionary[id] ?? ""
                     genreText.append("\(genre) • ")
                 }
